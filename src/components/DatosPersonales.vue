@@ -7,7 +7,7 @@ import cv from '/src/assets/cv_resume_icon.svg';
 const title = 'Enzo Ulloa';
 const descripcion = 'Técnico Universitario en Programación - UTN';
 const residencia = 'Godoy Cruz, Mendoza, Argentina';
-const presentacion = 'Hola, Bienvenido a mi portafolio de proyectos. Soy un desarrollador web con experiencia en el desarrollo de aplicaciones web y móviles.';
+const presentacion = '👨‍💻 Soy Enzo y me encanta el mundo de la tecnología, siempre curioso, compañero y en constante aprendizaje.👾 Responsable, autocritico y siempre buscando superarme.🚀 Aprendo rápido y busco avanzar constantemente, ganar experiencia mediante nuevos desafíos, problemas y logros que se me presenten en el camino.';
 const redesSociales = [
   { id: 1, name: 'linkedin', src: linkedin, url: '' },
   { id: 2, name: 'Instagram', src: instagram, url: '' },

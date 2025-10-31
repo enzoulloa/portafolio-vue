@@ -6,14 +6,15 @@ import icono4 from '/src/assets/uiux.svg';
 import icono5 from '/src/assets/watch.svg';
 
 import { ref } from 'vue';
-const titulo = 'Desarrollador Full Stack';
-const fecha = 'Desde Enero 2022 / Julio 2024';
+
+const titulo = 'Ingeniero de Software en Nación Servicios';
+const fecha = 'Desde Agosto 2023 / Actualidad';
 const experiencias = ref([
-    { id: 1, src: icono1, parrafo: 'Lideré un equipo de 5 desarrolladores en la creación de una plataforma de comercio electrónico que incrementó las ventas en un 35% durante el primer año.' },
-    { id: 2, src: icono2, parrafo: 'Diseñé y desarrollé aplicaciones web utilizando Node.js, React y MongoDB, logrando reducir el tiempo de carga de las páginas en un 50%.' },
-    { id: 3, src: icono3, parrafo: 'Implementé soluciones de autenticación y autorización, mejorando la seguridad del sitio web y reduciendo los intentos de acceso no autorizado en un 20%.' },
-    { id: 4, src: icono4, parrafo: 'Colaboré con diseñadores de UX/UI para crear interfaces de usuario atractivas y fáciles de usar, aumentando la satisfacción del cliente en un 15%.' },
-    { id: 5, src: icono5, parrafo: 'Automaticé procesos de despliegue continuo utilizando Jenkins y Docker, reduciendo los tiempos de despliegue en un 40%.' },
+    { id: 1, src: icono1, parrafo: 'Desarrollo y mantenimiento full stack de aplicaciones web corporativas utilizando tecnologías como Node.js, Express, Vue y PostgreSQL.' },
+    { id: 2, src: icono2, parrafo: 'Optimización del rendimiento y refactorización de código existente para mejorar la escalabilidad y mantenibilidad del sistema.' },
+    { id: 3, src: icono3, parrafo: 'Implementación de integraciones con APIs internas y externas, garantizando la seguridad y consistencia de los datos.' },
+    { id: 4, src: icono4, parrafo: 'Colaboración con equipos de diseño y QA para asegurar una experiencia de usuario fluida y de alta calidad.' },
+    { id: 5, src: icono5, parrafo: 'Automatización de despliegues y monitoreo de servicios mediante herramientas de CI/CD y contenedores Docker.' },
 ]);
 </script>
 
@@ -42,6 +43,7 @@ const experiencias = ref([
             <li class="item"><img class="imagen-svg" src="/src/assets/watch.svg" width="45rem" alt="">
                 <p>Automaticé procesos de despliegue continuo utilizando Jenkins y Docker, reduciendo los tiempos de despliegue en un 40%.</p>
             </li> -->
+
         </ul>
     </div>
 </template>
@@ -53,11 +55,13 @@ const experiencias = ref([
     padding: 2rem;
     background-color: rgb(28, 41, 52);
     border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 .titulo {
     font-size: 1.5rem;
     color: coral;
+    margin-bottom: 0.3rem;
 }
 
 .fecha {
@@ -76,5 +80,16 @@ const experiencias = ref([
     display: flex;
     padding: 1rem;
     gap: 1.5rem;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
+
+.item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+p {
+    color: var(--vt-c-white-soft);
+    line-height: 1.4;
 }
 </style>

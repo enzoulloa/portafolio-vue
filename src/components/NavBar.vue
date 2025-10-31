@@ -1,9 +1,14 @@
 <template>
     <nav class='navbar'>
-      <div class='navbar-menu'>
-        <ul>
-            <a v-for="nav in navegacion" :key="nav.nombre" :href="nav.enlace" class="nav-item">{{ nav.nombre }}</a>
-        </ul>
+      <div class='navbar-container'>
+        <div class='navbar-logo'>E.U</div>
+        <div class='navbar-menu'>
+          <ul>
+              <a v-for="nav in navegacion" :key="nav.nombre" :href="nav.enlace" class="nav-item">
+                {{ nav.nombre }}
+              </a>
+          </ul>
+        </div>
       </div>
     </nav>
 </template>
@@ -12,7 +17,7 @@
 import { ref } from 'vue';
 
 const navegacion = ref([
-    {id:1, nombre:'Educacion', enlace:'#educacion'},
+    {id:1, nombre:'Educación', enlace:'#educacion'},
     {id:2, nombre:'Experiencia', enlace:'#experiencia'},
     {id:3, nombre:'Proyectos', enlace:'#proyectos'},
     {id:4, nombre:'Habilidades', enlace:'#habilidades'}
@@ -21,37 +26,90 @@ const navegacion = ref([
 
 <style scoped>
 .navbar {
-    background-color: var(--vt-c-indigo); /* Establece el color de fondo usando una variable CSS */
-    color: #fff; /* Establece el color del texto en blanco */
-    padding: 0.5rem 1rem; /* Añade un padding de 0.5rem arriba y abajo, y 1rem a los lados */
-    align-items: center; /* Centra verticalmente los elementos dentro de la navbar */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    /* Fondo marrón oscuro con transparencia */
+    background: rgba(29, 22, 22, 0.98);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    /* Borde inferior en rojo brillante */
+    border-bottom: 2px solid #D84040;
 }
 
-.navbar-item {
-    color: #fff; /* Establece el color del texto en blanco */
-    text-decoration: none; /* Elimina el subrayado de los enlaces */
-    margin-right: 1rem; /* Añade un margen derecho de 1rem entre los elementos */
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    /* Logo en rojo brillante */
+    background: linear-gradient(135deg, #D84040, #8E1616);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .navbar-menu {
-    display: flex; /* Organiza los elementos en línea usando flexbox */
-    justify-content: flex-end; /* Alinea los elementos al final de la navbar */
+    display: flex;
 }
 
-.nav-list {
-    list-style: none; /* Elimina los puntos o números de las listas */
+.navbar-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
 }
 
-a {
-    border: 1px solid; /* Añade un borde sólido de 1px */
-    border-color: hsla(160, 100%, 37%, 0.2); /* Define el color del borde usando hsla */
-    border-radius: 5px; /* Redondea las esquinas del borde */
-    text-decoration: none; /* Elimina el subrayado de los enlaces */
-    transition: 0.4s; /* Añade una transición suave de 0.4s para los cambios de estilo */
-    padding: 5px; /* Añade un padding de 5px alrededor del contenido */
+.nav-item {
+    /* Texto en blanco claro */
+    color: #EEEEEE;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
 }
 
-a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2); /* Cambia el color de fondo al pasar el mouse sobre un enlace */
+.nav-item::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    /* Subrayado hover en rojo brillante */
+    background: #D84040;
+    transition: width 0.3s ease;
+}
+
+.nav-item:hover {
+    /* Hover con rojo brillante */
+    color: #D84040;
+}
+
+.nav-item:hover::after {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.75rem 1rem;
+    }
+
+    .navbar-menu ul {
+        gap: 1rem;
+        font-size: 0.85rem;
+    }
+
+    .navbar-logo {
+        font-size: 1.2rem;
+    }
 }
 </style>
