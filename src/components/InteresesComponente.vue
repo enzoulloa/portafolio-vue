@@ -1,66 +1,72 @@
 <script setup>
 import { ref } from 'vue';
-import FondoLava from './FondoLava.vue';
 
-// Arreglo reactivo con los nuevos intereses
 const intereses = ref([
-    'Tecnología: Me apasiona mantenerme al día con las últimas innovaciones, aprender nuevos lenguajes y explorar tendencias como la inteligencia artificial y el desarrollo web moderno.',
-    'Fútbol: Disfruto mirar y jugar al fútbol, siguiendo las principales ligas y torneos, y compartiendo la pasión por este deporte con amigos.',
-    'E-sports: Me interesa el mundo competitivo de los videojuegos, especialmente títulos como Counter Strike y otros juegos de estrategia en equipo.',
-    'Viajes: Me gusta conocer nuevos lugares, culturas y comidas, aprovechando cada viaje como una oportunidad de aprendizaje y desconexión.'
+    '💻 Tecnología: Me apasiona mantenerme al día con las últimas innovaciones, aprender nuevos lenguajes y explorar tendencias como la inteligencia artificial y el desarrollo web moderno.',
+    '⚽ Fútbol: Disfruto mirar y jugar al fútbol, siguiendo las principales ligas y torneos, y compartiendo la pasión por este deporte con amigos.',
+    '🎮 E-sports: Me interesa el mundo competitivo de los videojuegos, especialmente títulos como Counter Strike y otros juegos de estrategia en equipo.',
+    '✈️ Viajes: Me gusta conocer nuevos lugares, culturas y comidas, aprovechando cada viaje como una oportunidad de aprendizaje y desconexión.'
 ]);
 </script>
 
 <template>
     <div class="intereses-contenedor">
-        <FondoLava />
         <ul class="contenedor-lista">
-            <li class="item" v-for="interes in intereses" :key="interes">
+            <li class="item" v-for="(interes, index) in intereses" :key="index">
                 {{ interes }}
             </li>
         </ul>
     </div>
-        <!-- <div class="intereses-contenedor">
-        <ul class="contenedor-lista">
-            <li class="item">
-                Desarrollo de Software de Código Abierto: Contribuyo a proyectos en GitHub, colaborando con otros
-                desarrolladores para mejorar herramientas y librerías populares.
-            </li>
-            <li class="item">
-                Deportes al Aire Libre: Disfruto del senderismo y el ciclismo de montaña, actividades que practico
-                regularmente para mantener un equilibrio entre el trabajo y la vida personal.
-            </li>
-            <li class="item">
-                Tecnología de Innovación: Me apasiona explorar nuevas tendencias tecnológicas como la inteligencia
-                artificial y el desarrollo de aplicaciones móviles.
-            </li>
-            <li class="item">
-                Fotografía: Practico la fotografía como un hobby, lo que me ayuda a mantener una perspectiva creativa
-                tanto en mi vida profesional como personal.
-            </li>
-        </ul>
-    </div> -->
 </template>
 
 <style scoped>
 .intereses-contenedor {
-    display: flex;
-    position: relative;
+    max-width: 900px;
     margin: 0 auto;
-    max-width: 85%;
-    padding: 1rem;
+    padding: 2rem;
 }
 
 .contenedor-lista {
     list-style-type: none;
     padding: 1rem;
-    margin-bottom: 0.5rem;
-    color: var(--vt-c-white-soft);
-    font-size: 1.4rem;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 1);
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
 }
 
 .item {
-    margin-bottom: 1rem;
+    background: rgba(216, 64, 64, 0.45);
+    border: 1px solid rgba(216, 64, 64, 0.25);
+    padding: 1.5rem;
+    border-radius: 12px;
+    color: #EEEEEE;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    transition: all 0.3s ease;
+}
+
+.item:hover {
+    background: rgba(216, 64, 64, 0.15);
+    border-color: rgba(216, 64, 64, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(216, 64, 64, 0.2);
+}
+
+@media (max-width: 768px) {
+    .intereses-contenedor {
+        padding: 1.5rem;
+    }
+
+    .contenedor-lista {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0.5rem;
+    }
+
+    .item {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
 }
 </style>

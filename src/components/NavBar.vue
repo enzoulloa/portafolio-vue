@@ -1,7 +1,7 @@
 <template>
     <nav class='navbar'>
       <div class='navbar-container'>
-        <div class='navbar-logo'>E.U</div>
+        <div class='navbar-logo'>Enzo Ulloa</div>
         <div class='navbar-menu'>
           <ul>
               <a v-for="nav in navegacion" :key="nav.nombre" :href="nav.enlace" class="nav-item">
@@ -29,11 +29,9 @@ const navegacion = ref([
     position: sticky;
     top: 0;
     z-index: 1000;
-    /* Fondo marrón oscuro con transparencia */
     background: rgba(29, 22, 22, 0.98);
     backdrop-filter: blur(10px);
     padding: 1rem 2rem;
-    /* Borde inferior en rojo brillante */
     border-bottom: 2px solid #D84040;
 }
 
@@ -48,7 +46,6 @@ const navegacion = ref([
 .navbar-logo {
     font-size: 1.5rem;
     font-weight: 700;
-    /* Logo en rojo brillante */
     background: linear-gradient(135deg, #D84040, #8E1616);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -68,7 +65,6 @@ const navegacion = ref([
 }
 
 .nav-item {
-    /* Texto en blanco claro */
     color: #EEEEEE;
     text-decoration: none;
     font-size: 0.95rem;
@@ -84,13 +80,11 @@ const navegacion = ref([
     height: 2px;
     bottom: -5px;
     left: 0;
-    /* Subrayado hover en rojo brillante */
     background: #D84040;
     transition: width 0.3s ease;
 }
 
 .nav-item:hover {
-    /* Hover con rojo brillante */
     color: #D84040;
 }
 
