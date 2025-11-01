@@ -30,7 +30,7 @@ const misProyectos = ref([
     src: hunter,
     titulo: "Hunter",
     descripcion:
-      "Hunter es una página hecha para practicar teniendo como referencia a webflow.com.",
+      "Hunter es una página hecha para practicar teniendo como referencia a webflow.com. Usando buenas prácticas y cuidando el SEO y el performance.",
     tech: "Tech stack: React, TailwindCSS.",
     projectoLink: "https://tangerine-bublanina-840fb9.netlify.app/",
     githubLink: "https://github.com/usuario/hunter",
@@ -114,6 +114,7 @@ const misProyectos = ref([
 .proyecto-info {
   padding: 1.5rem;
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
 }
 
