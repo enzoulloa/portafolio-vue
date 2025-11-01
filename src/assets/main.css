@@ -22,8 +22,9 @@ a {
 
 @media (max-width: 1024px){
   #app{
+    padding: 0;
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 100%;
   }
 }

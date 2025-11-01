@@ -1,164 +1,198 @@
 <script setup>
 import { ref } from 'vue';
-const fechaColor = ref([]);
-fechaColor.value = [
-  {color: '#D84040'},
-  {color: '#8E1616'},
-  {color: '#D84040'},
-  {color: '#8E1616'},
-  {color: '#D84040'}
-];
+
+const fechaColor = ref([
+  { color: '#D84040' },
+  { color: '#8E1616' },
+  { color: '#D84040' },
+  { color: '#8E1616' },
+  { color: '#D84040' }
+]);
 
 const educacion = ref([
-  {fecha: '2024', title: 'Técnicatura Universitaria en Programación', descripcion: 'Incumbencias Profesionales: Operación y programación de computadoras, desarrollo de programas en distintos lenguajes, análisis y control de sistemas informáticos.'},
-  {fecha: '2022', title: 'Platzi - Full Stack Web Developer', descripcion: 'Escuela de Desarrollo Web'},
-  {fecha: '2022', title: 'Soy Henry Bootcamp', descripcion: 'Henry Bootcamp. +800 horas de cursado teórico práctico.'},
-  {fecha: '2017', title: 'UTN-Mendoza - Tecnicatura en Programación', descripcion: 'Titulo no concluido'},
-  {fecha: '2016', title: 'UTN-Mendoza - Ingeniería en Sistemas', descripcion: 'Titulo no concluido'}
+  {
+    fecha: '2024',
+    title: 'Técnicatura Universitaria en Programación',
+    descripcion:
+      'Incumbencias Profesionales: Operación y programación de computadoras, desarrollo de programas en distintos lenguajes, análisis y control de sistemas informáticos.'
+  },
+  {
+    fecha: '2022',
+    title: 'Platzi - Full Stack Web Developer',
+    descripcion: 'Escuela de Desarrollo Web'
+  },
+  {
+    fecha: '2022',
+    title: 'Soy Henry Bootcamp',
+    descripcion: 'Henry Bootcamp. +800 horas de cursado teórico práctico.'
+  },
+  {
+    fecha: '2017',
+    title: 'UTN-Mendoza - Tecnicatura en Programación',
+    descripcion: 'Título no concluido'
+  },
+  {
+    fecha: '2016',
+    title: 'UTN-Mendoza - Ingeniería en Sistemas',
+    descripcion: 'Título no concluido'
+  }
 ]);
 </script>
 
 <template>
-    <ul class="timeline">
-        <li v-for="(item, index) in educacion" :key="index" :style="{ '--fecha-color': fechaColor[index].color}">
-        <div class="fecha">{{ item.fecha }}</div>
-        <h3 class="title">{{ item.title }}</h3>
-        <div class="descripcion">{{ item.descripcion }}</div>
+  <ul class="timeline">
+    <li
+      v-for="(item, index) in educacion"
+      :key="index"
+      :style="{ '--fecha-color': fechaColor[index].color }"
+    >
+      <div class="fecha">{{ item.fecha }}</div>
+      <h3 class="title">{{ item.title }}</h3>
+      <div class="descripcion">{{ item.descripcion }}</div>
     </li>
-    </ul>
+  </ul>
 </template>
 
 <style scoped>
-ul {
-    --col-gap: 2rem;
-    --row-gap: 2.5rem;
-    --line-w: 3px;
-    display: grid;
-    grid-template-columns: var(--line-w) 1fr;
-    grid-auto-columns: max-content;
-    column-gap: var(--col-gap);
-    list-style: none;
-    width: min(60rem, 90%);
-    margin: 2rem auto;
-    padding: 0;
+/* ===== BASE ===== */
+.timeline {
+  --col-gap: 2rem;
+  --row-gap: 2.5rem;
+  --line-w: 3px;
+  display: grid;
+  grid-template-columns: var(--line-w) 1fr;
+  column-gap: var(--col-gap);
+  list-style: none;
+  width: min(60rem, 90%);
+  margin: 2rem auto;
+  padding: 0;
+  position: relative;
 }
 
-ul::before {
-    content: "";
-    grid-column: 1;
-    grid-row: 1 / span 20;
-    background: linear-gradient(180deg, #D84040, #8E1616);
-    border-radius: 10px;
+.timeline::before {
+  content: '';
+  grid-column: 1;
+  grid-row: 1 / span 20;
+  background: linear-gradient(180deg, #d84040, #8e1616);
+  border-radius: 10px;
 }
 
-ul li:not(:last-child) {
-    margin-bottom: var(--row-gap);
+.timeline li {
+  grid-column: 2;
+  display: grid;
+  grid-template-rows: min-content min-content min-content;
+  margin-bottom: var(--row-gap);
 }
 
-ul li {
-    grid-column: 2;
-    --inlineP: 1.5rem;
-    margin-inline: var(--inlineP);
-    grid-row: span 2;
-    display: grid;
-    grid-template-rows: min-content min-content min-content;
+.timeline li .fecha {
+  --dateH: 3.2rem;
+  height: var(--dateH);
+  text-align: center;
+  background: var(--fecha-color);
+  color: #eeeeee;
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: grid;
+  place-content: center;
+  position: relative;
+  border-radius: calc(var(--dateH) / 2) 0 0 calc(var(--dateH) / 2);
+  box-shadow: 0 4px 12px rgba(216, 64, 64, 0.3);
+  margin-bottom: 0.8rem;
 }
 
-ul li .fecha {
-    --dateH: 3.5rem;
-    height: var(--dateH);
-    margin-inline: calc(var(--inlineP) * -1);
-    text-align: center;
-    background: var(--fecha-color);
-    color: #EEEEEE;
-    font-size: 1.25rem;
-    font-weight: 700;
-    display: grid;
-    place-content: center;
-    position: relative;
-    border-radius: calc(var(--dateH) / 2) 0 0 calc(var(--dateH) / 2);
-    box-shadow: 0 4px 15px rgba(216, 64, 64, 0.4);
+.timeline li .fecha::after {
+  content: '';
+  position: absolute;
+  width: 1rem;
+  aspect-ratio: 1;
+  background: #1d1616;
+  border: 3px solid var(--fecha-color);
+  border-radius: 50%;
+  top: 50%;
+  transform: translate(50%, -50%);
+  right: calc(100% + var(--col-gap) + var(--line-w) / 2);
+  box-shadow: 0 0 0 4px rgba(216, 64, 64, 0.15);
 }
 
-ul li .fecha::before {
-    content: "";
-    width: var(--inlineP);
-    aspect-ratio: 1;
-    background: var(--fecha-color);
-    position: absolute;
-    top: 100%;
-    clip-path: polygon(0 0, 100% 0, 0 100%);
-    right: 0;
+.timeline li .title,
+.timeline li .descripcion {
+  background: rgba(29, 22, 22, 0.7);
+  backdrop-filter: blur(10px);
+  position: relative;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba(216, 64, 64, 0.3);
+  border-radius: 10px;
 }
 
-ul li .fecha::after {
-    content: "";
-    position: absolute;
-    width: 1.2rem;
-    aspect-ratio: 1;
-    background: #1D1616;
-    border: 3px solid var(--fecha-color);
-    border-radius: 50%;
-    top: 50%;
-    transform: translate(50%, -50%);
-    right: calc(100% + var(--col-gap) + var(--line-w) / 2);
-    box-shadow: 0 0 0 4px rgba(216, 64, 64, 0.2);
+.timeline li .title {
+  font-weight: 600;
+  color: #eeeeee;
+  font-size: 1rem;
 }
 
-ul li .title,
-ul li .descripcion {
-    background: rgba(29, 22, 22, 0.6);
-    backdrop-filter: blur(10px);
-    position: relative;
-    padding-inline: 1.5rem;
-    border: 1px solid rgba(216, 64, 64, 0.3);
-    border-radius: 10px;
+.timeline li .descripcion {
+  margin-top: 0.5rem;
+  color: #d1d5db;
+  font-size: 0.95rem;
+  line-height: 1.4;
 }
 
-ul li .title {
-    padding-block: 1.5rem 1rem;
-    font-weight: 600;
-    color: #EEEEEE;
-    font-size: 1.1rem;
-}
-
-ul li .descripcion {
-    padding-block: 1rem 1.5rem;
-    font-weight: 400;
-    color: #D1D5DB;
-    font-size: 0.95rem;
-}
-
-@media (min-width: 40rem) {
-  ul {
+/* ===== TABLET Y DESKTOP ===== */
+@media (min-width: 768px) {
+  .timeline {
     grid-template-columns: 1fr var(--line-w) 1fr;
+    column-gap: 3rem;
   }
-  ul::before {
+
+  .timeline::before {
     grid-column: 2;
   }
-  ul li:nth-child(odd) {
+
+  .timeline li {
+    margin-bottom: var(--row-gap);
+  }
+
+  .timeline li:nth-child(odd) {
     grid-column: 1;
   }
-  ul li:nth-child(even) {
+
+  .timeline li:nth-child(even) {
     grid-column: 3;
   }
 
-  ul li:nth-child(2) {
-    grid-row: 2/4;
+  .timeline li .fecha {
+    font-size: 1.2rem;
   }
 
-  ul li:nth-child(odd) .fecha::before {
-    clip-path: polygon(0 0, 100% 0, 100% 100%);
-    left: 0;
+  .timeline li:nth-child(odd) .fecha {
+    border-radius: 0 calc(var(--dateH) / 2) calc(var(--dateH) / 2) 0;
   }
 
-  ul li:nth-child(odd) .fecha::after {
+  .timeline li:nth-child(odd) .fecha::after {
     transform: translate(-50%, -50%);
     left: calc(100% + var(--col-gap) + var(--line-w) / 2);
   }
+}
 
-  ul li:nth-child(odd) .fecha {
-    border-radius: 0 calc(var(--dateH) / 2) calc(var(--dateH) / 2) 0;
+/* ===== MOBILE SMALL (extra mejora para <480px) ===== */
+@media (max-width: 480px) {
+  .timeline {
+    --col-gap: 1.5rem;
+    --row-gap: 2rem;
+    width: 95%;
+  }
+
+  .timeline li .fecha {
+    font-size: 1rem;
+    height: 2.8rem;
+  }
+
+  .timeline li .title {
+    font-size: 0.95rem;
+  }
+
+  .timeline li .descripcion {
+    font-size: 0.9rem;
   }
 }
 </style>

@@ -45,9 +45,7 @@ const misProyectos = ref([
       <div class="proyecto-info">
         <h3>{{ proyecto.titulo }}</h3>
         <p>{{ proyecto.descripcion }}</p>
-        <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 1rem;">
-          {{ proyecto.tech }}
-        </p>
+        <p class="tech">{{ proyecto.tech }}</p>
         <div class="proyecto-links">
           <a
             :href="proyecto.projectoLink"
@@ -86,7 +84,7 @@ const misProyectos = ref([
 .proyecto {
   display: flex;
   flex-direction: column;
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(15, 23, 42, 0.7);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
@@ -96,15 +94,15 @@ const misProyectos = ref([
 }
 
 .proyecto:hover {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
   border-color: rgba(0, 212, 255, 0.3);
-  background: rgba(15, 23, 42, 0.8);
-  box-shadow: 0 12px 40px rgba(0, 212, 255, 0.15);
+  background: rgba(15, 23, 42, 0.85);
+  box-shadow: 0 12px 36px rgba(0, 212, 255, 0.15);
 }
 
 .proyecto-img {
   width: 100%;
-  height: 200px;
+  height: 220px;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
@@ -115,13 +113,12 @@ const misProyectos = ref([
 
 .proyecto-info {
   padding: 1.5rem;
-  flex: 1;
   display: flex;
   flex-direction: column;
 }
 
 .proyecto-info h3 {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #e0e7ff;
   margin: 0 0 0.75rem 0;
   font-weight: 600;
@@ -129,48 +126,51 @@ const misProyectos = ref([
 
 .proyecto-info p {
   color: #cbd5e1;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.proyecto-info .tech {
+  color: #94a3b8;
+  font-size: 0.85rem;
   margin-bottom: 1.5rem;
-  flex: 1;
 }
 
 .proyecto-links {
   display: flex;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
 .btn-ver-mas {
   flex: 1;
   background: linear-gradient(135deg, #00d4ff, #0099ff);
   color: #0f172a;
-  padding: 0.75rem 1rem;
+  padding: 0.65rem 1rem;
   border-radius: 8px;
   text-decoration: none;
   text-align: center;
   font-weight: 600;
   font-size: 0.9rem;
   transition: all 0.3s ease;
-  border: none;
-  cursor: pointer;
 }
 
 .btn-ver-mas:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 212, 255, 0.3);
+  box-shadow: 0 6px 16px rgba(0, 212, 255, 0.3);
 }
 
 .github-link {
   flex: 1;
   color: #00d4ff;
   border: 1px solid rgba(0, 212, 255, 0.3);
-  padding: 0.75rem 1rem;
+  padding: 0.65rem 1rem;
   border-radius: 8px;
   text-decoration: none;
   text-align: center;
   font-weight: 600;
   font-size: 0.9rem;
-  transition: all 0.3s ease;
   background: transparent;
 }
 
@@ -178,6 +178,13 @@ const misProyectos = ref([
   background: rgba(0, 212, 255, 0.1);
   border-color: #00d4ff;
   transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .proyecto-img {
+    height: 200px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -189,6 +196,38 @@ const misProyectos = ref([
 
   .proyecto-info {
     padding: 1rem;
+  }
+
+  .proyecto-info h3 {
+    font-size: 1.1rem;
+  }
+
+  .proyecto-info p {
+    font-size: 0.9rem;
+  }
+
+  .proyecto-links {
+    flex-direction: column;
+  }
+
+  .btn-ver-mas,
+  .github-link {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .proyecto-img {
+    height: 180px;
+  }
+
+  .proyecto-info h3 {
+    font-size: 1rem;
+  }
+
+  .proyecto-info p {
+    font-size: 0.88rem;
   }
 }
 </style>

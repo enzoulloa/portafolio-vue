@@ -107,7 +107,6 @@ const habilidades = ref([
   }
 ]);
 </script>
-
 <template>
   <div class="skills-contenedor">
     <div v-for="categoria in habilidades" :key="categoria.id" class="skills-categoria">
@@ -124,9 +123,10 @@ const habilidades = ref([
 
 <style scoped>
 .skills-contenedor {
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 3rem 2rem;
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(29, 22, 22, 0.7);
+  backdrop-filter: blur(10px);
 }
 
 .skills-categoria {
@@ -135,10 +135,11 @@ const habilidades = ref([
 }
 
 .skills-categoria h3 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: #00d4ff;
   margin-bottom: 1.5rem;
   font-weight: 700;
+  text-align: left;
 }
 
 .skills {
@@ -176,6 +177,7 @@ const habilidades = ref([
   height: 32px;
   filter: brightness(0) invert(1);
   opacity: 0.7;
+  transition: all 0.3s ease;
 }
 
 .skill:hover img {
@@ -189,6 +191,7 @@ const habilidades = ref([
   font-weight: 500;
 }
 
+/* Tablet */
 @media (max-width: 768px) {
   .skills-categoria h3 {
     text-align: center;
@@ -199,11 +202,37 @@ const habilidades = ref([
   }
 
   .skill {
-    min-width: auto;
-    flex: 1 1 auto;
-    max-width: 150px;
     flex-direction: column;
     text-align: center;
+    min-width: 140px;
+    max-width: 180px;
+  }
+
+  .skill span {
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile pequeño */
+@media (max-width: 480px) {
+  .skills-contenedor {
+    padding: 2rem 1rem;
+  }
+
+  .skill {
+    min-width: auto;
+    max-width: 100%;
+    padding: 0.6rem 1rem;
+    gap: 0.5rem;
+  }
+
+  .skill img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .skill span {
+    font-size: 0.85rem;
   }
 }
 </style>
